@@ -22,7 +22,7 @@ public class VilleBLOImpl implements VilleBLO {
         if (codePostal == null || "".equalsIgnoreCase(codePostal)) {
 			listVille = villeDAO.findVilles();
 		} else {
-			listVille = villeDAO.findVilleCodePostal(codePostal);
+			listVille = villeDAO.findVillesCodePostal(codePostal);
 		}
         
         System.out.println("Nombre de ville récupérée(s) : " + listVille.size() );

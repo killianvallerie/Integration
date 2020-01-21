@@ -7,12 +7,11 @@ import com.dto.Ville;
 
 public interface VilleDAO {
 	
+	public ArrayList<Ville> findVillesCodePostal(String codePostal);
+	
 	public ArrayList<Ville> findVilles();
-
-    public ArrayList<Ville> findVilleCodePostal(String codePostal);
-
+	
 	public void saveVille(Ville ville);
 	
 	public void updateVille(String codePostal, Ville ville);
-
 }

@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value=HttpStatus.FORBIDDEN)
 public class VilleException extends RuntimeException {
 
+	/**
+	 * Serial IUD for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VilleException(String message) {
 		super(message);
 	}

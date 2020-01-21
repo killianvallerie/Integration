@@ -47,8 +47,8 @@ class VilleController {
 
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
-		}
-
+		} 
+		
 	    villeService.insertVille(ville);
 		return "index";
 	}
@@ -60,6 +60,7 @@ class VilleController {
 	    System.out.println(codePostal);
 	    System.out.println(ville.getCodePostal());
 	    villeService.updateVille(codePostal, ville);
+
 		return "index";
 	}
 

@@ -16,7 +16,7 @@ public class LieuVille implements Serializable {
 	/**
 	 * Serial IUD for serialization.
 	 */
-	private static final long serialVersionUID = 6037181396472147356L;
+	private static final long serialVersionUID = 1L;
 	
 	private String latitude;	
 	private String longitude;
