@@ -34,7 +34,7 @@ public class VilleBLOImpl implements VilleBLO {
 	public void insertVille(Ville ville) throws VilleException {
 
 		if (!"".equalsIgnoreCase(ville.getCodePostal())) {
-			villeDAO.saveVille(ville);
+			villeDAO.insertVille(ville);
 		} 
 	}
 	

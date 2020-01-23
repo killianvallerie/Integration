@@ -62,7 +62,7 @@ public class VilleDAOImpl implements VilleDAO {
     }
 	
 	@Override
-    public void saveVille(Ville ville) {
+    public void insertVille(Ville ville) {
 
 		try {
 			// solution 1

@@ -3,7 +3,6 @@ package com.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +36,7 @@ class VilleController {
 	// Methode POST
 	@RequestMapping(value="/ville", method=RequestMethod.POST)
 	@ResponseBody
-	public String insert(@RequestBody Ville ville, Model model) {
+	public String insert(@RequestBody Ville ville) {
 		System.out.println("Appel POST");
 		System.out.println("ville Post : " + ville.toString());
 		ObjectMapper mapper = new ObjectMapper();
@@ -54,7 +53,7 @@ class VilleController {
 	}
 	
 	// Methode PUT
-	public String update(@PathVariable String codePostal, @RequestBody Ville ville, Model model) {
+	public String update(@PathVariable String codePostal, @RequestBody Ville ville) {
 		System.out.println("Appel PUT");
 
 	    System.out.println(codePostal);
