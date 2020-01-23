@@ -28,13 +28,16 @@ public class VilleDAOImpl implements VilleDAO {
 			// solution 1
 			Connection con = JDBCConfigurationSol1.getConnection();
 		
-			// solution propre via prepareStatement
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM ville_france where Code_postal = ?");
 			statement.setString(1, codePostal);
 			
 			// execution 
             ResultSet resultSet = statement.executeQuery();
 
+            // close de la connexion
+			resultSet.close();
+			statement.close();
+			
             // parcourt des éléments de réponse
 			while(resultSet.next()){
 				Ville ville = new Ville();
@@ -51,10 +54,6 @@ public class VilleDAOImpl implements VilleDAO {
   
 				listVille.add(ville);
 			}
-			
-            // close de la connexion
-			resultSet.close();
-			statement.close();
 			    
 		} catch (SQLException e) {
 		    e.printStackTrace();
@@ -70,10 +69,9 @@ public class VilleDAOImpl implements VilleDAO {
 			Connection con = JDBCConfigurationSol1.getConnection();
 			
 			String insertTableSQL = "INSERT INTO ville_france "
-					+ "(Code_commune_INSEE, Nom_commune, Code_postal, Libelle_acheminement, Ligne_5, Latitude, Longitude) "
-					+ "VALUES (?,?,?,?,?,?,?) ";
+					+ "(Code_commune_INSEE, Nom_commune, Code_postal, Libelle_acheminement,"
+					+ " Ligne_5, Latitude, Longitude) VALUES (?,?,?,?,?,?,?) ";
 			
-			// solution propre via prepareStatement
 			PreparedStatement statement = con.prepareStatement(insertTableSQL);
 			statement.setString(1, ville.getCodeCommune());
 			statement.setString(2, ville.getNomCommune());
@@ -82,8 +80,8 @@ public class VilleDAOImpl implements VilleDAO {
 			statement.setString(5, ville.getLigne());
 			statement.setString(6, ville.getLieu().getLatitude());
 			statement.setString(7, ville.getLieu().getLongitude());
-			// execution 
-            statement.executeUpdate();
+
+			statement.executeUpdate();
             
             // close de la connexion
 			statement.close();
@@ -102,10 +100,11 @@ public class VilleDAOImpl implements VilleDAO {
 			Connection con = JDBCConfigurationSol1.getConnection();
 			
 			String updateTableSQL = "UPDATE ville_france SET "
-					+ "Code_commune_INSEE = ?, Nom_commune = ?, Code_postal = ?, Libelle_acheminement = ?, Ligne_5 = ?, Latitude = ?, Longitude = ? "
-					+ "WHERE Code_postal = ? ";
+					+ "Code_commune_INSEE = ?, Nom_commune = ?, Code_postal = ?,"
+					+ " Libelle_acheminement = ?, Ligne_5 = ?, Latitude = ?,"
+					+ " Longitude = ? WHERE Code_postal = ? ";
 			
-			// solution propre via prepareStatement
+
 			PreparedStatement statement = con.prepareStatement(updateTableSQL);
 			statement.setString(1, ville.getCodeCommune());
 			statement.setString(2, ville.getNomCommune());
@@ -115,8 +114,8 @@ public class VilleDAOImpl implements VilleDAO {
 			statement.setString(6, ville.getLieu().getLatitude());
 			statement.setString(7, ville.getLieu().getLongitude());
 			statement.setString(8, codePostal);
-			// execution 
-            statement.executeUpdate();
+
+			statement.executeUpdate();
             
             // close de la connexion
 			statement.close();
